@@ -12,16 +12,23 @@
   <% end %>
 
   <div class="field">
+    <% if @post.author == nil %>
+    <%= f.hidden_field :author_id, value: 1 %>
+  <% else %>
+    <%= f.hidden_field :author_id, value: @post.author.id %>
+  <% end %>
+  
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, id: 'title' %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, id: 'description' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Post' %>
+    <%= f.submit 'Update Post' %>
   </div>
 <% end %>
